@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alt — an alt text generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark" aria-hidden="true"></span>
+      Alt
+    </div>
+    <span class="eyebrow">Alt text, written properly</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-head">
+        <span class="eyebrow">001 — Image description</span>
+        <h1>Describe the image.<br>Not the pixels.</h1>
+        <p>Drop in an image and get alt text that actually helps someone using a screen reader — grounded, specific, and the right length for the context.</p>
+      </div>
+
+      <div class="studio">
+        <div class="panel-input">
+          <div class="panel-label">
+            <span>01 — Source image</span>
+          </div>
+
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload an image, or press Enter to choose a file">
+            <div class="dz-empty" id="dzEmpty">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="4" y="8" width="32" height="24" rx="1" stroke="#14162E" stroke-width="1.6"/>
+                <circle cx="13" cy="16" r="2.4" stroke="#14162E" stroke-width="1.6"/>
+                <path d="M4 26L14 18L22 24L28 19L36 26" stroke="#FFCF33" stroke-width="2"/>
+              </svg>
+              <div class="cta">Click to upload, or drag one in</div>
+              <div class="sub">JPG, PNG, WebP — up to 10MB</div>
+            </div>
+            <div class="dz-image-wrap" id="dzImageWrap">
+              <button type="button" class="replace-btn" id="replaceBtn">Replace image</button>
+              <img id="previewImg" alt="" />
+              <div class="bracket b-tl"></div>
+              <div class="bracket b-tr"></div>
+              <div class="bracket b-bl"></div>
+              <div class="bracket b-br"></div>
+              <div class="scanline"></div>
+            </div>
+            <input type="file" id="fileInput" accept="image/*" />
+          </div>
+
+          <div class="panel-label">
+            <span>02 — Length</span>
+          </div>
+          <div class="options-row">
+            <div class="opt-group" role="group" aria-label="Alt text length">
+              <button type="button" data-len="concise" class="active">Concise</button>
+              <button type="button" data-len="descriptive">Descriptive</button>
+              <button type="button" data-len="decorative">Decorative</button>
+            </div>
+          </div>
+
+          <div class="context-field">
+            <label for="contextInput">03 — Context (optional)</label>
+            <input type="text" id="contextInput" placeholder="e.g. hero image on a bakery homepage" />
+          </div>
+
+          <button class="generate-btn" id="generateBtn" disabled>
+            <span class="dot" aria-hidden="true"></span>
+            <span id="generateLabel">Upload an image first</span>
+          </button>
+
+          <div class="error-banner" id="errorBanner" role="alert"></div>
+        </div>
+
+        <div class="panel-output">
+          <div class="panel-label">
+            <span>Output</span>
+            <span id="statusLabel"></span>
+          </div>
+
+          <div class="tag-preview">
+            <div id="placeholderState" class="placeholder-state">
+              Your alt attribute will appear here once you generate it.
+            </div>
+            <div id="filledState" style="display:none; flex:1; display:none; flex-direction:column;">
+              <span><span class="prefix">&lt;img src="…" </span><span class="attr">alt=</span><span class="prefix">"</span></span>
+              <textarea class="alt-value" id="altValue" rows="6" aria-label="Generated alt text, editable"></textarea>
+              <span class="prefix">"&gt;</span>
+            </div>
+          </div>
+
+          <div class="output-foot">
+            <span class="char-count" id="charCount"></span>
+            <div class="actions">
+              <button class="icon-btn" id="copyBtn" disabled>Copy alt="…"</button>
+              <button class="icon-btn" id="regenBtn" disabled>Regenerate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <div class="wrap">
+      <h2>How it reads the image</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Frame it</h3>
+          <p>The image is scanned for what's actually depicted — subjects, action, layout — the way an editor would describe it over the phone.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Weigh the context</h3>
+          <p>A product photo, a chart, and a decorative flourish all need different alt text. Context and length settings shape which one you get.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Write it plainly</h3>
+          <p>No "image of," no guessing at emotion, no keyword stuffing — just the information a sighted user would get at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Generated alt text is a strong first draft — always give it a read before it ships. Nothing you upload is stored.</p>
+    <span class="eyebrow">Alt</span>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
